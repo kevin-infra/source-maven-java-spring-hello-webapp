@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+  
+  tasks:
+  - name: Create & Start Container
+    docker_container:
+      name: myweb
+      image: "sesac91/my-tomcat:{{ lookup('env','BUILD_NUMBER') }}"
+      state: started
+      ports:
+      - "80:8080"
+
